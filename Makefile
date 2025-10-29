@@ -6,13 +6,15 @@
 #    By: nadoho <nadoho@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/14 10:16:02 by nadoho            #+#    #+#              #
-#    Updated: 2025/10/28 00:33:40 by nadoho           ###   ########.fr        #
+#    Updated: 2025/10/30 00:48:27 by nadoho           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = cc
+
+RM = rm -f
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -60,23 +62,23 @@ MY_SOURCES_BONUS = ft_lstadd_back.c \
 			ft_lstmap.c \
 			ft_lstnew.c \
 			ft_lstsize.c
-			
+
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
 MY_OBJECTS_BONUS = $(MY_SOURCES_BONUS:.c=.o)
 
 all: $(NAME)
 
-$(NAME) : $(MY_OBJECTS) $(MY_OBJECTS_BONUS)
-		ar rcs $(NAME) $(MY_OBJECTS) $(MY_OBJECTS_BONUS)
+$(NAME) : $(MY_OBJECTS)
+		ar rcs $(NAME) $(MY_OBJECTS)
 
 clean:
-		rm -f $(MY_OBJECTS) $(MY_OBJECTS_BONUS)
+		$(RM) $(MY_OBJECTS) $(MY_OBJECTS_BONUS)
 
 fclean: clean 
-		rm -f $(NAME)
+		$(RM) $(NAME)
 
 re: fclean $(NAME)
 
-bonus: ${MY_OBJECTS_BONUS}
-		ar rcs $(NAME) $(MY_OBJECTS_BONUS)
+bonus: $(MY_OBJECTS) $(MY_OBJECTS_BONUS)
+		ar rcs $(NAME) $(MY_OBJECTS) $(MY_OBJECTS_BONUS)

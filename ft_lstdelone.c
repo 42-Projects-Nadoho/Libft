@@ -6,7 +6,7 @@
 /*   By: nadoho <nadoho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 18:59:15 by nadoho            #+#    #+#             */
-/*   Updated: 2025/10/24 19:47:50 by nadoho           ###   ########.fr       */
+/*   Updated: 2025/10/30 00:52:01 by nadoho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	(*del)(lst->content);
-	free(lst);
+	if (lst && del)
+	{
+		(*del)(lst->content);
+		free(lst);
+	}
 }
